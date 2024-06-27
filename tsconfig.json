@@ -1,18 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "esNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "dist",
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "allowJs": true,
-  },
-  "include": ["src/**/*"],
+	"compilerOptions": {
+		"target": "esNext",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"outDir": "dist",
+		"declaration": true,
+		"declarationDir": "dist",
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"allowJs": true
+	},
+	"include": ["src/**/*"]
 }
