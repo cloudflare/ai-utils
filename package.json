@@ -1,5 +1,5 @@
 {
-  "name": "ai-utils",
+  "name": "@cloudflare/ai-utils",
   "license": "Apache-2.0",
   "version": "1.0.0",
   "description": "Utilities for working with AI tools",
