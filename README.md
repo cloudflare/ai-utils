@@ -93,8 +93,6 @@ const ourTool = tool({
 
 ### OpenAPI to Tool Converter
 
-Function `createToolsFromOpenAPISpec`
-
 This project provides a function `createToolsFromOpenAPISpec` that converts an OpenAPI specification into a set of tools in JSONSchema format, each with an associated function to make API calls. This can be useful for generating API clients dynamically based on an OpenAPI spec.
 Using this, users can simply make agents like:
 
