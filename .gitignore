@@ -1,0 +1,23 @@
+node_modules
+package-lock.json
+.vscode/
+.DS_Store
+.env
+.env.test
+.env.production
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+bun.lockb
+tests/test.ts
+tests/test-worker

@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "fetch-event-stream": "^0.1.5",
+    "yaml": "^2.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.14.8",
+    "prettier": "^3.3.2"
+  }
+}
