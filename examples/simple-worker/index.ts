@@ -1,5 +1,4 @@
-import { createToolsFromOpenAPISpec, runWithTools, tool } from "@cloudflare/ai-utils"
-import { autoTrimTools } from "@cloudflare/ai-utils"
+import { createToolsFromOpenAPISpec, runWithTools, tool, autoTrimTools } from "@cloudflare/ai-utils"
 
 const GITHUB_SPEC =
   "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
