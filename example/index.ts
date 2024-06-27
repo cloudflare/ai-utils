@@ -1,5 +1,5 @@
-import { createToolsFromOpenAPISpec, runWithTools, tool } from "../index"
-import { autoTrimTools } from "../src/utils"
+import { createToolsFromOpenAPISpec, runWithTools, tool } from "@cloudflare/ai-utils"
+import { autoTrimTools } from "@cloudflare/ai-utils"
 
 const GITHUB_SPEC =
   "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
@@ -8,7 +8,7 @@ export default {
   async fetch(request, env, ctx): Promise<Response> {
     const prompt = new URL(request.url).searchParams.get("prompt")
     if (!prompt) {
-      return new Response("No prompt provided", { status: 400 })
+      return new Response("No prompt provided. Try '?prompt=Who is github user joe?'", { status: 400 })
     }
 
     const githubUserTool = await createToolsFromOpenAPISpec(GITHUB_SPEC, {
