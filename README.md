@@ -10,6 +10,8 @@ npm install @cloudflare/ai-utils --save
 
 This package contains a set of utilities to make it easier to work with the [Cloudflare Workers AI platform](https://developers.cloudflare.com/workers-ai/).
 
+To learn more about function calling and its usage on Cloudflare, refer to the documentation here: [Cloudflare Function Calling Documentation](https://developers.cloudflare.com/workers-ai/function-calling/).
+
 This package contains the following utilities:
 
 ### `runWithTools`
