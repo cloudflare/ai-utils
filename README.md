@@ -8,7 +8,7 @@ npm  install  @cloudflare/ai-utils
 
 ### What is this?
   
-This package contains a set of utilities to make it easier to work with the [Cloudflare Workers AI platform](https://ai.cloudflare.com).
+This package contains a set of utilities to make it easier to work with the [Cloudflare Workers AI platform](https://developers.cloudflare.com/workers-ai/).
 
 This package contains the following utilities:
 
