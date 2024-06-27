@@ -6,6 +6,7 @@ dist
 .env
 .env.test
 .env.production
+.wrangler
 
 npm-debug.log*
 yarn-debug.log*
