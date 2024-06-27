@@ -14,7 +14,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "fetch-event-stream": "^0.1.5",
     "yaml": "^2.4.5",
     "zod": "^3.23.8"
   },
