@@ -108,7 +108,7 @@ As long as the API provides an OpenAPI spec, an agent can be made with it. When 
 
 This function takes an OpenAPI spec and a configuration object and returns an array of tools.
 
-Arguments;
+Arguments:
 
 - `spec`: The OpenAPI specification. This can be in JSON or YAML form. You can also provide a remote specification and it will be fetched and parsed.
 - `config`:
