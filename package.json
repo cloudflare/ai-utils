@@ -6,7 +6,8 @@
   "type": "module",
   "author": "Dhravya Shah <dhravya@cloudflare.com>",
   "scripts": {
-    "build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm"
+    "build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm",
+    "format": "prettier --write ."
   },
   "files": [
     "dist/*"
