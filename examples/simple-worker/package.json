@@ -1,6 +1,6 @@
 {
   "name": "test-worker",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.4.5",
     "@cloudflare/workers-types": "^4.20240620.0",
