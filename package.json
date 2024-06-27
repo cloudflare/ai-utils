@@ -1,4 +1,18 @@
 {
+  "name": "ai-utils",
+  "license": "Apache-2.0",
+  "version": "0.0.1",
+  "description": "Utilities for working with AI tools",
+  "type": "module",
+  "author": "Dhravya Shah <dhravya@cloudflare.com>",
+  "scripts": {
+    "build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "fetch-event-stream": "^0.1.5",
     "yaml": "^2.4.5",
@@ -9,6 +23,8 @@
     "@types/js-yaml": "^4.0.9",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^20.14.8",
-    "prettier": "^3.3.2"
+    "esbuild": "^0.21.5",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2"
   }
 }
