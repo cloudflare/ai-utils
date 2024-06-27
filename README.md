@@ -1,4 +1,5 @@
-## Utilities to make it easier to work with Workers AI platform.
+## Developer toolkit that makes it simple to build with the Workers AI platform.
+Includes support for embedded function calling, and more in the future!
 
 ### Installation
 
