@@ -1,4 +1,5 @@
-## Utilities to make it easier to work with Workers AI platform.
+## Developer toolkit that makes it simple to build with the Workers AI platform.
+Includes support for embedded function calling, and more in the future!
 
 ### Installation
 
@@ -92,8 +93,6 @@ const ourTool = tool({
 
 ### OpenAPI to Tool Converter
 
-Function `createToolsFromOpenAPISpec`
-
 This project provides a function `createToolsFromOpenAPISpec` that converts an OpenAPI specification into a set of tools in JSONSchema format, each with an associated function to make API calls. This can be useful for generating API clients dynamically based on an OpenAPI spec.
 Using this, users can simply make agents like:
 
@@ -107,7 +106,7 @@ As long as the API provides an OpenAPI spec, an agent can be made with it. When 
 
 This function takes an OpenAPI spec and a configuration object and returns an array of tools.
 
-Arguments;
+Arguments:
 
 - `spec`: The OpenAPI specification. This can be in JSON or YAML form. You can also provide a remote specification and it will be fetched and parsed.
 - `config`:
