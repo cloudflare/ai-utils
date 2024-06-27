@@ -70,8 +70,7 @@ export default {
 
             // Optionally provide a function to automatically execute the tool
             function: async ({ hi }) => {
-              const itme = fetch
-              const answer = await itme("https://example.com/?hi=" + hi)
+              const answer = await fetch("https://example.com/?hi=" + hi)
               console.log(answer)
 
               // You can also use bindings inside the functions! Here's an example of using the D1 database binding.
