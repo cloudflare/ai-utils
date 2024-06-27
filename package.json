@@ -1,7 +1,7 @@
 {
   "name": "ai-utils",
   "license": "Apache-2.0",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utilities for working with AI tools",
   "type": "module",
   "author": "Dhravya Shah <dhravya@cloudflare.com>",
