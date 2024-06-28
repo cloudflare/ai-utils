@@ -1,34 +1,33 @@
 {
-  "name": "@cloudflare/ai-utils",
-  "license": "Apache-2.0",
-  "version": "1.0.1",
-  "description": "Utilities for working with AI tools",
-  "type": "module",
-  "author": "Dhravya Shah <dhravya@cloudflare.com>",
-  "scripts": {
-    "build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm"
-  },
-  "files": [
-    "dist/*"
-  ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "dependencies": {
-    "yaml": "^2.4.5",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240620.0",
-    "@types/js-yaml": "^4.0.9",
-    "@types/json-schema": "^7.0.15",
-    "@types/node": "^20.14.8",
-    "esbuild": "^0.21.5",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.2"
-  },
-  "homepage": "https://github.com/cloudflare/ai-utils",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/cloudflare/ai-utils.git"
-  }
+	"name": "@cloudflare/ai-utils",
+	"license": "Apache-2.0",
+	"version": "1.0.1",
+	"description": "Utilities for working with AI tools",
+	"type": "module",
+	"author": "Dhravya Shah <dhravya@cloudflare.com>",
+	"scripts": {
+		"build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm",
+		"format": "prettier --write ."
+	},
+	"files": [
+		"dist/*"
+	],
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"dependencies": {},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20240620.0",
+		"@types/json-schema": "^7.0.15",
+		"@types/node": "^20.14.8",
+		"esbuild": "^0.21.5",
+		"prettier": "^3.3.2",
+		"typescript": "^5.5.2",
+		"yaml": "^2.4.5",
+		"zod": "^3.23.8"
+	},
+	"homepage": "https://github.com/cloudflare/ai-utils",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/cloudflare/ai-utils.git"
+	}
 }
