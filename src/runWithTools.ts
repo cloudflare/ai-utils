@@ -213,6 +213,7 @@ export const runWithTools = async (
 					Logger.error(
 						`Function for tool ${toolCallObjectJson.name} is undefined`,
 					);
+          return response
 				}
 			});
 
