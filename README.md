@@ -1,4 +1,5 @@
 ## Developer toolkit that makes it simple to build with the Workers AI platform.
+
 Includes support for embedded function calling, and more in the future!
 
 ### Installation
@@ -42,41 +43,43 @@ Usage:
 
 ```ts
 const r = await runWithTools(
-  env.AI,
-  "@hf/nousresearch/hermes-2-pro-mistral-7b",
-  {
-    messages: [{ role: "user", content: "What's the weather in Mumbai, India?" }],
-    tools: [
-      {
-        name: "get-weather",
-        description: "Gets weather information of a particular city",
-        parameters: {
-          type: "object",
-          properties: {
-            city: {
-              type: "string",
-              description: "The city name"
-            }
-          },
-          required: ["city"]
-        },
-        function: async ({ city }) => {
-          // fetch weather data from an API
-          console.log("value from llm", city)
+	env.AI,
+	"@hf/nousresearch/hermes-2-pro-mistral-7b",
+	{
+		messages: [
+			{ role: "user", content: "What's the weather in Mumbai, India?" },
+		],
+		tools: [
+			{
+				name: "get-weather",
+				description: "Gets weather information of a particular city",
+				parameters: {
+					type: "object",
+					properties: {
+						city: {
+							type: "string",
+							description: "The city name",
+						},
+					},
+					required: ["city"],
+				},
+				function: async ({ city }) => {
+					// fetch weather data from an API
+					console.log("value from llm", city);
 
-          return city
-        }
-      }
-    ]
-  },
-  {
-    strictValidation: true,
-    maxRecursiveToolRuns: 1,
-    streamFinalResponse: true,
-    // If there's too many tools, you can enable this
-    trimFunction: autoTrimTools
-  }
-)
+					return city;
+				},
+			},
+		],
+	},
+	{
+		strictValidation: true,
+		maxRecursiveToolRuns: 1,
+		streamFinalResponse: true,
+		// If there's too many tools, you can enable this
+		trimFunction: autoTrimTools,
+	},
+);
 ```
 
 You may also use the `tool()` function, which is a helper that provides type completions for the function arguments and the tool, so you can create tools from outside the `runWithTools` function and still enjoy type safety.
@@ -117,29 +120,29 @@ Arguments:
 
 ```typescript
 const githubUserTool = await createToolsFromOpenAPISpec(GITHUB_SPEC, {
-  matchPatterns: [
-    // api.github.com/users/{username} and api.github.com/users/{username}/repos
-    /^https:\/\/api\.github\.com\/users\/([^\/]+)\/repos$/,
-    /^https:\/\/api\.github\.com\/users\/([^\/]+)$/,
-    // Also, for api.github.com/repos/{owner}/{repo}/ queries
-    /^https:\/\/api\.github\.com\/repos\/([^\/]+)\/([^\/]+)\/?$/
-  ],
-  overrides: [
-    {
-      // for all requests on *.github.com, we'll need to add a User-Agent and Authorization.
-      matcher: ({ url, method }) => {
-        return url.hostname === "api.github.com"
-      },
-      values: {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
-          Authorization: "Bearer GITHUB_TOKEN"
-        }
-      }
-    }
-  ]
-})
+	matchPatterns: [
+		// api.github.com/users/{username} and api.github.com/users/{username}/repos
+		/^https:\/\/api\.github\.com\/users\/([^\/]+)\/repos$/,
+		/^https:\/\/api\.github\.com\/users\/([^\/]+)$/,
+		// Also, for api.github.com/repos/{owner}/{repo}/ queries
+		/^https:\/\/api\.github\.com\/repos\/([^\/]+)\/([^\/]+)\/?$/,
+	],
+	overrides: [
+		{
+			// for all requests on *.github.com, we'll need to add a User-Agent and Authorization.
+			matcher: ({ url, method }) => {
+				return url.hostname === "api.github.com";
+			},
+			values: {
+				headers: {
+					"User-Agent":
+						"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+					Authorization: "Bearer GITHUB_TOKEN",
+				},
+			},
+		},
+	],
+});
 ```
 
 ### Embedded function calling on the Workers platform
@@ -151,42 +154,46 @@ Because we use bindings, most of the compute and the lookups happen in the same 
 Here's an example of an agent that automatically makes database entries with conversations to have a 'memory' of who the user is:
 
 ```ts
-const r = await runWithTools(env.AI, "@hf/nousresearch/hermes-2-pro-mistral-7b", {
-  messages: [
-    {
-      role: "system",
-      content: "Save important information about the user to the KV databse."
-    },
-    {
-      role: "user",
-      content: "Hi! I'm dhravya. An engineering intern at Cloudflare."
-    }
-  ],
-  tools: [
-    tool({
-      name: "Save information",
-      description: "Info save about the user",
-      parameters: {
-        type: "object",
-        properties: {
-          key: {
-            type: "string",
-            description: "Name of the user"
-          },
-          value: {
-            type: "string",
-            description: "Information of the user"
-          }
-        },
-        required: ["key", "value"]
-      },
-      function: async ({ key, value }) => {
-        await env.KV.put(key, value)
-        return `Saved ${key} to the KV database.`
-      }
-    })
-  ]
-})
+const r = await runWithTools(
+	env.AI,
+	"@hf/nousresearch/hermes-2-pro-mistral-7b",
+	{
+		messages: [
+			{
+				role: "system",
+				content: "Save important information about the user to the KV databse.",
+			},
+			{
+				role: "user",
+				content: "Hi! I'm dhravya. An engineering intern at Cloudflare.",
+			},
+		],
+		tools: [
+			tool({
+				name: "Save information",
+				description: "Info save about the user",
+				parameters: {
+					type: "object",
+					properties: {
+						key: {
+							type: "string",
+							description: "Name of the user",
+						},
+						value: {
+							type: "string",
+							description: "Information of the user",
+						},
+					},
+					required: ["key", "value"],
+				},
+				function: async ({ key, value }) => {
+					await env.KV.put(key, value);
+					return `Saved ${key} to the KV database.`;
+				},
+			}),
+		],
+	},
+);
 ```
 
 ### Contributing
