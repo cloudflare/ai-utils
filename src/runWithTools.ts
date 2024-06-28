@@ -148,7 +148,7 @@ export const runWithTools = async (
           // Validate arguments if strict validation is enabled
           if (strictValidation && !validateArgsWithZod(args, selectedTool.parameters.properties as any)) {
             Logger.error(`Invalid arguments for tool ${selectedTool.name}: ${JSON.stringify(args)}`)
-            return // Or handle the error accordingly
+            return
           }
 
           try {
@@ -174,6 +174,7 @@ export const runWithTools = async (
           }
         } else {
           Logger.error(`Function for tool ${toolCallObjectJson.name} is undefined`)
+          return response
         }
       })
 
