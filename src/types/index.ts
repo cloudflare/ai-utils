@@ -1,4 +1,8 @@
-import { AiTextGenerationToolInput } from "@cloudflare/workers-types";
+import {
+	AiTextGenerationToolInput,
+	type AiTextGenerationOutput,
+	type ReadableStream,
+} from "@cloudflare/workers-types";
 import { JSONSchema7 } from "json-schema";
 
 export type UppercaseHttpMethod =
@@ -91,3 +95,8 @@ export function tool<T extends JSONSchema7>(
 ): ToolsSchema<T> {
 	return tool;
 }
+
+export type NonStreamingAiTextGenerationOutput = Exclude<
+	AiTextGenerationOutput,
+	ReadableStream
+>;
