@@ -8,6 +8,8 @@ import {
 	Ai,
 	BaseAiTextGenerationModels,
 	RoleScopedChatInput,
+	type AiTextGenerationOutput,
+	type ReadableStream,
 } from "@cloudflare/workers-types";
 
 export async function fetchSpec(
@@ -130,16 +132,8 @@ export async function autoTrimTools(
 			],
 			stream: false,
 			tools: [{ type: "function", function: chooseTools }],
-		})) as {
-			response?: string;
-			tool_calls?: {
-				// For now, I couldn't find a reliable way to remove the ReadableStream type from the union.
-				name: string;
-				arguments: {
-					tools: string[];
-				};
-			}[];
-		};
+			// `ReadableStream` needs to be imported from `@cloudflare/workers-types` because that's the one used in the definition of `AiTextGenerationOutput`
+		})) as Exclude<AiTextGenerationOutput, ReadableStream>;
 
 		// Filter the chosen tool calls from the response
 		const chooseToolCalls = toolsResponse.tool_calls?.filter(Boolean);
