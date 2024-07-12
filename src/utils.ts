@@ -3,7 +3,10 @@ import { OpenAPIV3 } from "./types/openapi-schema";
 import { JSONSchema7 } from "json-schema";
 import { ZodTypeAny, z } from "zod";
 import { Logger } from "./logger";
-import { AiTextGenerationToolInputWithFunction } from "./types";
+import {
+	AiTextGenerationToolInputWithFunction,
+	type NonStreamingAiTextGenerationOutput,
+} from "./types";
 import {
 	Ai,
 	BaseAiTextGenerationModels,
@@ -91,6 +94,19 @@ export function validateArgsWithZod(
 	}
 }
 
+// Carry over the arguments type from previous commit
+interface AutoTrimToolsResponseArguments
+	extends Omit<NonStreamingAiTextGenerationOutput["tool_calls"], "arguments"> {
+	arguments: {
+		tools: string[];
+	};
+}
+// Drop `tool_calls` so that we can override its `arguments` property
+interface AutoTrimToolsResponse
+	extends Omit<NonStreamingAiTextGenerationOutput, "tool_calls"> {
+	tool_calls?: AutoTrimToolsResponseArguments[];
+}
+
 export async function autoTrimTools(
 	tools: AiTextGenerationToolInputWithFunction[],
 	ai: Ai,
@@ -133,7 +149,8 @@ export async function autoTrimTools(
 			stream: false,
 			tools: [{ type: "function", function: chooseTools }],
 			// `ReadableStream` needs to be imported from `@cloudflare/workers-types` because that's the one used in the definition of `AiTextGenerationOutput`
-		})) as Exclude<AiTextGenerationOutput, ReadableStream>;
+			// Omit `tool_calls` so we can override it's sub property
+		})) as AutoTrimToolsResponse;
 
 		// Filter the chosen tool calls from the response
 		const chooseToolCalls = toolsResponse.tool_calls?.filter(Boolean);
