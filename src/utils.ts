@@ -6,7 +6,7 @@ import { Logger } from "./logger";
 import { AiTextGenerationToolInputWithFunction } from "./types";
 import {
 	Ai,
-	BaseAiTextGenerationModels,
+	AiModels,
 	RoleScopedChatInput,
 } from "@cloudflare/workers-types";
 
@@ -92,7 +92,7 @@ export function validateArgsWithZod(
 export async function autoTrimTools(
 	tools: AiTextGenerationToolInputWithFunction[],
 	ai: Ai,
-	model: BaseAiTextGenerationModels,
+	model: keyof AiModels,
 	messages: RoleScopedChatInput[],
 ) {
 	let returnedTools = tools;

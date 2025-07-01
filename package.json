@@ -7,16 +7,16 @@
 	"author": "Dhravya Shah <dhravya@cloudflare.com>",
 	"scripts": {
 		"build": "tsc && esbuild src/index.ts --bundle --outfile=dist/index.js --sourcemap --format=esm",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"prepare": "npm run build"
 	},
 	"files": [
 		"dist/*"
 	],
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"dependencies": {},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20240620.0",
+		"@cloudflare/workers-types": "^4.20250701.0",
 		"@types/json-schema": "^7.0.15",
 		"@types/node": "^20.14.8",
 		"esbuild": "^0.21.5",
