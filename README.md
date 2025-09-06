@@ -161,7 +161,7 @@ const r = await runWithTools(
 		messages: [
 			{
 				role: "system",
-				content: "Save important information about the user to the KV databse.",
+				content: "Save important information about the user to the KV database.",
 			},
 			{
 				role: "user",
