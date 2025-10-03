@@ -1,5 +1,10 @@
-import { AiTextGenerationToolInput } from "@cloudflare/workers-types";
+import { AiTextGenerationToolInput, AiModels } from "@cloudflare/workers-types";
 import { JSONSchema7 } from "json-schema";
+
+/**
+ * Model names available in Workers AI
+ */
+export type ModelName = keyof AiModels;
 
 export type UppercaseHttpMethod =
 	| "GET"

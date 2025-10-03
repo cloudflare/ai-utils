@@ -3,10 +3,9 @@ import { OpenAPIV3 } from "./types/openapi-schema";
 import { JSONSchema7 } from "json-schema";
 import { ZodTypeAny, z } from "zod";
 import { Logger } from "./logger";
-import { AiTextGenerationToolInputWithFunction } from "./types";
+import { AiTextGenerationToolInputWithFunction, ModelName } from "./types";
 import {
 	Ai,
-	BaseAiTextGenerationModels,
 	RoleScopedChatInput,
 } from "@cloudflare/workers-types";
 
@@ -92,7 +91,7 @@ export function validateArgsWithZod(
 export async function autoTrimTools(
 	tools: AiTextGenerationToolInputWithFunction[],
 	ai: Ai,
-	model: BaseAiTextGenerationModels,
+	model: ModelName,
 	messages: RoleScopedChatInput[],
 ) {
 	let returnedTools = tools;
