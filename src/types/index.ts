@@ -1,4 +1,4 @@
-import { AiTextGenerationToolInput } from "@cloudflare/workers-types";
+import { AiModels, AiTextGenerationToolInput } from "@cloudflare/workers-types";
 import { JSONSchema7 } from "json-schema";
 
 export type UppercaseHttpMethod =
@@ -91,3 +91,5 @@ export function tool<T extends JSONSchema7>(
 ): ToolsSchema<T> {
 	return tool;
 }
+
+export type BaseAiTextGenerationModels = keyof AiModels;

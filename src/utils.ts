@@ -3,12 +3,11 @@ import { OpenAPIV3 } from "./types/openapi-schema";
 import { JSONSchema7 } from "json-schema";
 import { ZodTypeAny, z } from "zod";
 import { Logger } from "./logger";
-import { AiTextGenerationToolInputWithFunction } from "./types";
 import {
-	Ai,
+	AiTextGenerationToolInputWithFunction,
 	BaseAiTextGenerationModels,
-	RoleScopedChatInput,
-} from "@cloudflare/workers-types";
+} from "./types";
+import { Ai, RoleScopedChatInput } from "@cloudflare/workers-types";
 
 export async function fetchSpec(
 	spec: string,
