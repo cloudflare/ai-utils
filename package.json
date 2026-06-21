@@ -28,6 +28,6 @@
 	"homepage": "https://github.com/cloudflare/ai-utils",
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com/cloudflare/ai-utils.git"
+		"url": "git+https://github.com/cloudflare/ai-utils.git"
 	}
 }
