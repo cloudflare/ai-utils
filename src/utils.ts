@@ -45,7 +45,7 @@ export async function fetchSpec(
 	}
 }
 
-function convertToZodSchema(schema: any): ZodTypeAny {
+function convertToZodSchema(schema: any, required: string[] = []): ZodTypeAny {
 	switch (schema.type) {
 		case "string":
 			return z.string();
@@ -60,7 +60,14 @@ function convertToZodSchema(schema: any): ZodTypeAny {
 		case "object":
 			const properties: Record<string, ZodTypeAny> = {};
 			for (const key in schema.properties) {
-				properties[key] = convertToZodSchema(schema.properties[key]);
+				let property = convertToZodSchema(
+					schema.properties[key],
+					schema.properties[key].required ?? [],
+				);
+				if (!required.includes(key)) {
+					property = property.optional();
+				}
+				properties[key] = property;
 			}
 			return z.object(properties);
 		default:
@@ -71,10 +78,15 @@ function convertToZodSchema(schema: any): ZodTypeAny {
 export function validateArgsWithZod(
 	args: any,
 	properties: Record<string, JSONSchema7>,
+	required: string[] = [],
 ): boolean {
 	const zodSchema: Record<string, ZodTypeAny> = {};
 	for (const key in properties) {
-		zodSchema[key] = convertToZodSchema(properties[key]);
+		let property = convertToZodSchema(properties[key]);
+		if (!required.includes(key)) {
+			property = property.optional();
+		}
+		zodSchema[key] = property;
 	}
 
 	const schema = z.object(zodSchema);
