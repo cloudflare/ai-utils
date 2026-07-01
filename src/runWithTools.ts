@@ -177,6 +177,7 @@ export const runWithTools = async (
 						!validateArgsWithZod(
 							args,
 							selectedTool.parameters.properties as any,
+							(selectedTool.parameters.required as string[]) ?? [],
 						)
 					) {
 						Logger.error(
